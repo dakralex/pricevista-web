@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import Searchbar from "../../components/search/Searchbar";
 
 const SearchPage = () => {
-	return <div>
+	return <div className="pv-search-container">
 		<h1>Search</h1>
-		<Link to={'..'}>Go back</Link>
+		<Searchbar />
 	</div>;
 };
 

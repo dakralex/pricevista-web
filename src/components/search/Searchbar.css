@@ -1,3 +1,18 @@
-.pv-searchbar {
+.pv-search-container {
+    background-color: var(--secondary-dark);
+    padding: 1rem;  
+    color: var(--foreground);
+}
 
+.pv-searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: .50rem;
+    border-radius: .50rem;
+    border: 2px solid var(--secondary-dark);
+    outline-color: var(--secondary-dark);
+    margin-top: 2rem;
+    color: var(--secondary-dark);
 }

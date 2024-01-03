@@ -1,0 +1,11 @@
+.pv-container {
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+}
+
+.pv-content {
+    display: flex;
+    flex-direction: column;
+    width: 66.66%;
+}

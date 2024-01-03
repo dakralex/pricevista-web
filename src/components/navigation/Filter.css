@@ -1,0 +1,10 @@
+.pv-filter {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary);
+    padding: 2rem;
+}
+
+.radio {
+    padding: 0 .5rem;
+}
