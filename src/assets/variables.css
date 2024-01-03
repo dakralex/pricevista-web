@@ -1,0 +1,22 @@
+:root {
+    --primary: #C1121F;
+    --primary-dark: #780000;
+    --secondary: #669BBC;
+    --secondary-dark: #003049;
+    --foreground: #FDF0D5;
+    --background: var(--secondary-dark);
+
+    --screen-xs: 26rem;
+    --screen-sm: 40rem;
+    --screen-md: 48rem;
+    --screen-lg: 64rem;
+    --screen-xl: 80rem;
+    --screen-2xl: 96rem;
+}
+
+@custom-media --min-screen-xs (min-width: 26rem);
+@custom-media --min-screen-sm (min-width: 40rem);
+@custom-media --min-screen-md (min-width: 48rem);
+@custom-media --min-screen-lg (min-width: 64rem);
+@custom-media --min-screen-xl (min-width: 80rem);
+@custom-media --min-screen-2xl (min-width: 96rem);

@@ -1,44 +1,152 @@
+@import 'variables.css';
+
+html,
+body,
 #root {
-    max-width: 1280px;
+    background-color: var(--foreground);
+    color: var(--background);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) var(--background);
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--background);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary);
+        border-radius: 5px;
+    }
+
+    & ::selection,
+    & ::-moz-selection {
+        background: var(--primary) BF;
+    }
+}
+
+#root {
+    width: 100%;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-}
+    padding: 0 2rem;
 
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
+    max-width: var(--screen-sm);
 
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
+    @media (--min-screen-lg) {
+        max-width: var(--screen-xl);
     }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
+button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+    hyphens: auto;
+    line-height: 1.25;
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-weight: 500;
+
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+
+    @media (--min-screen-xs) {
+        font-size: 3rem;
+        line-height: 1;
+    }
+
+    @media (--min-screen-md) {
+        font-size: 3.75rem;
+        line-height: 1;
+    }
+
+    @media (--min-screen-2xl) {
+        font-size: 4.5rem;
+        line-height: 1;
     }
 }
 
-.card {
-    padding: 2em;
+h2 {
+    font-weight: 500;
+
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+
+    @media (--min-screen-md) {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
 }
 
-.read-the-docs {
-    color: #888;
+h3 {
+    font-weight: 500;
+
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+
+    @media (--min-screen-xs) {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    @media (--min-screen-2xl) {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    overflow-wrap: break-word;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+p {
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    overflow-wrap: break-word;
+}
+
+strong {
+    font-weight: 500;
+}
+
+blockquote {
+    font-style: italic;
+    line-height: 1.25rem;
+    padding-left: 1rem;
+    border-left: .2rem solid var(--primary);
+}
+
+hr {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 2.5rem;
+    border-top: .2rem solid var(--primary);
+}
+
+ol,
+ul {
+    padding-left: 1.25rem;
+    list-style-type: decimal;
+}
+
+video {
+    width: 100%;
 }
