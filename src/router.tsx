@@ -1,20 +1,25 @@
 import { createBrowserRouter } from 'react-router-dom';
-import RootPage from './routes/homePage.tsx';
-import ArticlePage from './routes/articlePage.tsx';
-import SearchPage from './routes/searchPage.tsx';
+import Root from './routes/root.tsx';
+import HomePage from './routes/pages/homePage.tsx';
+import SearchPage from './routes/pages/searchPage.tsx';
+import ArticlePage from './routes/pages/articlePage.tsx';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <RootPage />,
+		element: <Root />,
 		// TODO Add custom errorElement later on
 		children: [
 			{
-				path: 'search',
+				path: '/',
+				element: <HomePage />
+			},
+			{
+				path: '/search',
 				element: <SearchPage />
 			},
 			{
-				path: 'articles/:articleId',
+				path: '/articles/:articleId',
 				element: <ArticlePage />
 			}
 		]
