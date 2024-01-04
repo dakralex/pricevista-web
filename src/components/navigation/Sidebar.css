@@ -1,6 +1,7 @@
 .pv-sidebar {
     display: flex;
+    flex-direction: column;
     width: 33.33%;
-    background-color: var(--secondary);
-    padding: 1rem;
 }
+
+

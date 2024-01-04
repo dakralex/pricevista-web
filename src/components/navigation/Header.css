@@ -1,5 +1,4 @@
 .pv-header {
-    position: fixed;
     top: 64px;
     left: 0;
     right: 0;
@@ -9,5 +8,4 @@
     align-items: center;
     border: 2px solid var(--secondary);
     background: var (--secondary);
-    height: 10rem;
 }
