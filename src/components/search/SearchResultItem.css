@@ -1,0 +1,7 @@
+.pv-resultItem {
+    display: flex;
+    align-items: center;
+    background-color: var(--foreground);
+    color: var(--secondary-dark);
+    padding: 2rem;
+}

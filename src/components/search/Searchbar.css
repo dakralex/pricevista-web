@@ -5,14 +5,22 @@
 }
 
 .pv-searchbar {
+    margin-bottom: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: .50rem;
-    border-radius: .50rem;
-    border: 2px solid var(--secondary-dark);
+    /* border: 2px solid var(--secondary-dark); */
     outline-color: var(--secondary-dark);
     margin-top: 2rem;
     color: var(--secondary-dark);
+}
+
+.pv-searchField input {
+    background-image: url("../src/assets/search.svg");
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+    
 }

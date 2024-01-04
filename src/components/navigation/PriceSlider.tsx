@@ -1,15 +1,14 @@
-import { Slider, RangeSlider, Row, Col, InputGroup, InputNumber } from 'rsuite';
-import React from 'react';
+import { Slider, RangeSlider, Row, Col, InputGroup, InputNumber } from "rsuite";
+import React from "react";
 // import ReactDOM from 'react-dom';
 // import './styles.css';
-import 'rsuite/Slider/styles/index.less';
-import './PriceSlider.css';
-
+import "rsuite/Slider/styles/index.less";
+import "./PriceSlider.css";
 
 // const PriceSlider = () => (
 //   <div>
 //     <p>Preis</p>
-//     <RangeSlider defaultValue={[10, 50]} /> 
+//     <RangeSlider defaultValue={[10, 50]} />
 //   </div>
 // );
 
@@ -24,7 +23,7 @@ function Example2() {
           progress
           style={{ marginTop: 16 }}
           value={value}
-          onChange={value => {
+          onChange={(value) => {
             setValue(value);
           }}
         />
@@ -35,7 +34,7 @@ function Example2() {
             min={0}
             max={100}
             value={value[0]}
-            onChange={nextValue => {
+            onChange={(nextValue) => {
               const [start, end] = value;
               if (nextValue > end) {
                 return;
@@ -48,7 +47,7 @@ function Example2() {
             min={0}
             max={100}
             value={value[1]}
-            onChange={nextValue => {
+            onChange={(nextValue) => {
               const [start, end] = value;
               if (start > nextValue) {
                 return;
@@ -63,11 +62,9 @@ function Example2() {
 }
 
 const PriceSlider = () => (
-  <>
-    
+  <div className="pv-priceslider">
     <Example2 />
-   
-  </>
+  </div>
 );
 
 export default PriceSlider;
