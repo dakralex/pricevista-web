@@ -1,8 +1,7 @@
 import { Col, InputGroup, InputNumber, RangeSlider, Row } from 'rsuite';
-import React from 'react';
-// import ReactDOM from 'react-dom';
+import { useState } from 'react';
 // import './styles.css';
-import 'rsuite/Slider/styles/index.less';
+// import 'rsuite/Slider/styles/index.less';
 import './PriceSlider.css';
 
 // const PriceSlider = () => (
@@ -15,7 +14,7 @@ import './PriceSlider.css';
 // ReactDOM.render(<App />, document.getElementById('root'));
 
 function Example2() {
-	const [value, setValue] = React.useState([10, 50]);
+	const [value, setValue] = useState<[number, number]>([10, 50]);
 	return (
 		<Row>
 			<Col md={10}>
@@ -23,6 +22,8 @@ function Example2() {
 					progress
 					style={{ marginTop: 16 }}
 					value={value}
+					min={value[0]}
+					max={value[1]}
 					onChange={(value) => {
 						setValue(value);
 					}}
@@ -34,26 +35,12 @@ function Example2() {
 						min={0}
 						max={100}
 						value={value[0]}
-						onChange={(nextValue) => {
-							const [start, end] = value;
-							if (nextValue > end) {
-								return;
-							}
-							setValue([nextValue, end]);
-						}}
 					/>
 					<InputGroup.Addon>to</InputGroup.Addon>
 					<InputNumber
 						min={0}
 						max={100}
 						value={value[1]}
-						onChange={(nextValue) => {
-							const [start, end] = value;
-							if (start > nextValue) {
-								return;
-							}
-							setValue([start, nextValue]);
-						}}
 					/>
 				</InputGroup>
 			</Col>
