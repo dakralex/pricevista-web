@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('public/fonts/FiraSans-Light-LatinSubset.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('public/fonts/FiraSans-LightItalic-LatinSubset.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Puritan';
+    src: url('../../public/fonts/Puritan-BoldItalic-LatinSubset.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Puritan';
+    src: url('../../public/fonts/Puritan-Bold-LatinSubset.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../../public/fonts/Nunito-Light-LatinSubset.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../../public/fonts/Nunito-LightItalic-LatinSubset.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../../public/fonts/Nunito-Regular-LatinSubset.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('../../public/fonts/Nunito-Italic-LatinSubset.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}

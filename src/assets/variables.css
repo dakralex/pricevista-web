@@ -1,10 +1,14 @@
 :root {
-    --primary: #C1121F;
-    --primary-dark: #780000;
-    --secondary: #669BBC;
-    --secondary-dark: #003049;
-    --foreground: #F1F5F9;
-    --background: var(--secondary-dark);
+    --font-heading: "Fira Sans";
+    --font-subheading: "Puritan";
+    --font-paragraph: "Nunito";
+
+    --primary: #F56476;
+    --primary-dark: #E43F6F;
+    --secondary: #79A9D1;
+    --tertiary: #899D78;
+    --foreground: #373F51;
+    --background: #DFBBB1;
 
     --screen-xs: 26rem;
     --screen-sm: 40rem;
@@ -12,11 +16,44 @@
     --screen-lg: 64rem;
     --screen-xl: 80rem;
     --screen-2xl: 96rem;
+
+    --roundedness: 1.5rem;
+
+    --neumorphism-x: 2rem;
+    --neumorphism-y: 2rem;
+    --neumorphism-angle: 145deg;
+    --neumorphism-blur: 3rem;
+    --neumorphism-light: #FED5CA;
+    --neumorphism-dark: #C0A198;
+    --neumorphism-shade-start: #EFC8BD;
+    --neumorphism-shade-end: #C9A89F;
+
+    @media (prefers-color-scheme: dark) {
+        --foreground: #DFBBB1;
+        --background: #373F51;
+
+        --neumorphism-light: #3e475b;
+        --neumorphism-dark: #303747;
+        --neumorphism-shade-start: #3b4357;
+        --neumorphism-shade-end: #323949;
+    }
+
+    --card-bg: linear-gradient(var(--neumorphism-angle),
+    var(--neumorphism-shade-start), var(--neumorphism-shade-end));
+    --card-box: var(--neumorphism-x) var(--neumorphism-y) var(--neumorphism-blur) var(--neumorphism-dark),
+    calc(-1 * var(--neumorphism-x)) calc(-1 * var(--neumorphism-y)) var(--neumorphism-blur) var(--neumorphism-light);
+    --card-box-pressed: inset var(--neumorphism-x) var(--neumorphism-y) var(--neumorphism-blur) var(--neumorphism-dark),
+    inset calc(-1 * var(--neumorphism-x)) calc(-1 * var(--neumorphism-y)) var(--neumorphism-blur) var(--neumorphism-light);
 }
 
 @custom-media --min-screen-xs (min-width: 26rem);
+
 @custom-media --min-screen-sm (min-width: 40rem);
+
 @custom-media --min-screen-md (min-width: 48rem);
+
 @custom-media --min-screen-lg (min-width: 64rem);
+
 @custom-media --min-screen-xl (min-width: 80rem);
+
 @custom-media --min-screen-2xl (min-width: 96rem);
