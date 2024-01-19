@@ -31,6 +31,7 @@ html {
 
     /* Customize the text selection to the secondary color */
     /* TODO Choose a better color here and update the comment */
+
     & ::selection,
     & ::-moz-selection {
         background: var(--secondary);
