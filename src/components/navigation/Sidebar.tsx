@@ -1,24 +1,14 @@
 import "./Sidebar.css";
-import Filter from "./Filter";
-import Sort from "./Sort";
-import Sort2 from "./Sort2";
+import SearchFilterBar from "./SearchFilterBar.tsx";
 
-const Sidebar = () => {
-  return (
-    <div className={"pv-sidebar"}>
-      <div>
-        <Filter />
-      </div>
+interface SideBarProps {
+  isHidden?: boolean;
+}
 
-      <div>
-        <Sort />
-      </div>
-
-      <div>
-        <Sort2 />
-      </div>
-    </div>
-  );
+const Sidebar = ({isHidden}: SideBarProps) => {
+  return <div className={`pv-sidebar ${isHidden && "hidden"}`}>
+    <SearchFilterBar />
+  </div>;
 };
 
 export default Sidebar;

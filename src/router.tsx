@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Root from './routes/root.tsx';
-import HomePage from './routes/pages/homePage.tsx';
-import SearchPage from './routes/pages/searchPage.tsx';
-import ArticlePage from './routes/pages/articlePage.tsx';
+import Root from './routes/Root.tsx';
+import HomePage from './routes/pages/HomePage.tsx';
+import SearchPage from './routes/pages/SearchPage.tsx';
+import ArticlePage from './routes/pages/ArticlePage.tsx';
 
 const router = createBrowserRouter([
 	{

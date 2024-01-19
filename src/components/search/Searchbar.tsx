@@ -1,15 +1,11 @@
 import "./Searchbar.css";
 
 const Searchbar = () => {
-  return (
-    <div className="pv-searchField">
-      <input
-        className={"pv-searchbar"}
-        type="text"
-        placeholder="Ich suche..."
-      />
-    </div>
-  );
+  return <input
+    className={"pv-searchbar"}
+    type="search"
+    placeholder="Ich suche..."
+  />;
 };
 
 export default Searchbar;

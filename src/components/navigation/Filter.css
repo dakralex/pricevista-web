@@ -1,9 +1,0 @@
-.pv-filter {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--secondary);
-    padding-left: 1rem;
-    margin-bottom: .25rem;
-}
-
-

@@ -1,45 +1,40 @@
-import "./SearchResultItem.css";
+import './SearchResultItem.css';
 
-interface IPrice {
-  id: string;
-  value: number;
-  currency: string;
-  from?: Date;
+export type Article = {
+	id: string;
+	brand: string;
+	name: string;
+	description?: string;
+	imageUrl?: string;
+	quantityUnit: string;
+	quantity: number;
+	priceCurrency: string;
+	price: number;
 }
+export type Articles = Array<Article>;
 
-interface IStorePrice {
-  id: string;
-  store: string;
-  price: IPrice;
-}
-
-interface IArticleVariant {
-  id: string;
-  name?: string;
-  unit: string;
-  quantity: number;
-  storePrices: Array<IStorePrice>;
-}
-
-interface IArticle {
-  id: string;
-  name: string;
-  brand: string;
-  description?: string;
-  imageUrl?: string;
-  variants: Array<IArticleVariant>;
-}
-
-type ISearchResultItem = IArticle;
-
-const SearchResultItem = () => {
-  return (
-    <div className="pv-resultItem">
-      <div className="imageSection">No image</div>
-      <h3>Article Name</h3>
-      <p>Article Description</p>
-    </div>
-  );
+const SearchResultItem = ({
+														id,
+														brand,
+														name,
+														description,
+														imageUrl,
+														quantityUnit,
+														quantity,
+														priceCurrency,
+														price
+													}: Article) => {
+	return <div key={id} className="pv-search-result-item">
+		<img src={imageUrl ?? "https://placehold.co/250"} alt="" />
+		<div className="pv-search-result-item-info">
+			<h3>{brand} {name}</h3>
+			<p>{quantity}&nbsp;{quantityUnit}</p>
+			{description && <p>{description}</p>}
+		</div>
+		<div className="pv-search-result-item-price">
+			<p>{priceCurrency}&nbsp;{price}</p>
+		</div>
+	</div>;
 };
 
 export default SearchResultItem;

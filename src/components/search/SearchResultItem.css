@@ -1,7 +1,13 @@
-.pv-resultItem {
-    display: flex;
-    align-items: center;
-    background-color: var(--foreground);
-    color: var(--secondary-dark);
+.pv-search-result-item {
+    width: 100%;
     padding: 2rem;
+
+    display: grid;
+    grid-template-columns: 25% auto 5rem;
+    column-gap: 1.5rem;
+
+    color: var(--foreground);
+    background: var(--card-bg);
+    box-shadow: var(--card-box);
+    border-radius: var(--roundedness);
 }

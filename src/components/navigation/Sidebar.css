@@ -1,7 +1,11 @@
 .pv-sidebar {
+    width: 100%;
+    padding: 1.75rem;
+    margin-bottom: auto;
+
     display: flex;
-    flex-direction: column;
-    width: 33.33%;
+
+    background: var(--card-bg);
+    box-shadow: var(--card-box);
+    border-radius: var(--roundedness);
 }
-
-

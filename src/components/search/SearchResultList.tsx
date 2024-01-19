@@ -1,11 +1,16 @@
-import SearchResultItem from "../../components/search/SearchResultItem";
+import './SearchResultList.css';
+import SearchResultItem, {
+	Articles
+} from '../../components/search/SearchResultItem';
 
-const SearchResultList = () => {
-  return (
-    <div className="resultList">
-      <SearchResultItem />
-    </div>
-  );
+interface SearchResultListProps {
+	items: Articles;
+}
+
+const SearchResultList = ({ items }: SearchResultListProps) => {
+	return <div className="pv-search-result-list">
+		{items.map(item => <SearchResultItem {...item} />)}
+	</div>;
 };
 
 export default SearchResultList;
