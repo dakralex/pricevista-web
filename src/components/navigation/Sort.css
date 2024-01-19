@@ -1,6 +1,4 @@
 .pv-sort {
     display: flex;
     flex-direction: column;
-    background-color: var(--secondary);
-    margin-bottom: .25rem;
 }

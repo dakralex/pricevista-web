@@ -4,14 +4,15 @@ import Select, { SelectOptions } from '../input/Select.tsx';
 
 const SearchFilterBar = () => {
 	const sortOptions: SelectOptions = [
-		{ value: "alpha-asc", displayText: "Alphabetisch (auf.)" },
-		{ value: "alpha-desc", displayText: "Alphabetisch (ab.)" },
-		{ value: "price-asc", displayText: "Preis (auf.)" },
-		{ value: "price-desc", displayText: "Preis (ab.)" },
+		{ value: 'alpha-asc', displayText: 'Alphabetisch (auf.)' },
+		{ value: 'alpha-desc', displayText: 'Alphabetisch (ab.)' },
+		{ value: 'price-asc', displayText: 'Preis (auf.)' },
+		{ value: 'price-desc', displayText: 'Preis (ab.)' }
 	];
 
 	return <div className="pv-search-filter-container">
-		<Select id="sort" formName="sort" displayText="Sortierung" options={sortOptions} />
+		<Select id="sort" formName="sort" displayText="Sortierung"
+						options={sortOptions} />
 		<Checkbox id="bio" displayText="Nur Bio-Produkte" />
 		<div className="radio">
 			<label>

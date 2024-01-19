@@ -25,7 +25,7 @@ const SearchResultItem = ({
 														price
 													}: Article) => {
 	return <div key={id} className="pv-search-result-item">
-		<img src={imageUrl ?? "https://placehold.co/250"} alt="" />
+		<img src={imageUrl ?? 'https://placehold.co/250'} alt="" />
 		<div className="pv-search-result-item-info">
 			<h3>{brand} {name}</h3>
 			<p>{quantity}&nbsp;{quantityUnit}</p>
