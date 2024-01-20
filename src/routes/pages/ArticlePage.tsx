@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const ArticlePage = () => {
-	return (
-		<div>
-			<h1>Articles</h1>
+  return (
+      <div>
+        <h1>Articles</h1>
 
-			<Link to={'..'}>Go back</Link>
-		</div>
-	);
+        <Link to={'..'}>Go back</Link>
+      </div>
+  );
 };
 
 export default ArticlePage;

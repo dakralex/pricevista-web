@@ -1,7 +1,7 @@
 import SearchPage from './SearchPage.tsx';
 
 const HomePage = () => {
-	return <SearchPage />;
+  return <SearchPage />;
 };
 
 export default HomePage;
