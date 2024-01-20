@@ -1,0 +1,54 @@
+.pv-radio-select {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    & > label {
+        margin-bottom: .125rem;
+    }
+}
+
+label.pv-radio {
+    display: grid;
+    align-items: center;
+    gap: .5rem;
+    grid-template-columns: 1rem auto;
+
+    & input[type="radio"] {
+        cursor: pointer;
+        appearance: none;
+
+        display: grid;
+        place-content: center;
+
+        width: 1rem;
+        height: 1rem;
+        border: .125rem solid var(--foreground);
+        border-radius: 50%;
+
+        &::before {
+            content: "";
+
+            width: .5rem;
+            height: .5rem;
+            background-color: var(--background);
+            box-shadow: inset 1rem 1rem var(--primary);
+            border-radius: 50%;
+
+            transform: scale(0);
+            transition: transform 150ms ease-in-out;
+        }
+
+        &:checked {
+            &::before {
+                transform: scale(1);
+            }
+        }
+
+        &:focus {
+            outline: .125rem solid var(--foreground);
+            outline-offset: .125rem;
+        }
+    }
+}
