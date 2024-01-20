@@ -1,0 +1,28 @@
+.pv-article-item {
+    width: 100%;
+    padding: 2rem;
+
+    display: grid;
+    grid-template-columns: 25% auto 5rem;
+    column-gap: 1.5rem;
+
+    color: var(--foreground);
+    background: var(--card-bg);
+    box-shadow: var(--card-box);
+    border-radius: var(--roundedness);
+
+    & h4 {
+        margin-bottom: .5rem;
+    }
+
+    & .pv-article-item-brand {
+        font-style: oblique;
+    }
+
+    & .pv-article-item-price-best {
+        font-weight: 500;
+
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+    }
+}

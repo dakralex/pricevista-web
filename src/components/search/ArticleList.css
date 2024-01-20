@@ -1,0 +1,7 @@
+.pv-article-list {
+    width: 100%;
+
+    & .pv-article-item {
+        margin-bottom: 2.5rem;
+    }
+}
