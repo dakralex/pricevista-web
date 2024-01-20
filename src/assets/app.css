@@ -1,9 +1,9 @@
 @import 'variables.css';
 
 html {
-    background-color: var(--background);
-    color: var(--foreground);
     font-family: var(--font-paragraph);
+    color: var(--foreground);
+    background-color: var(--background);
 
     /* Instruct the browser to use only the site's font faces and optimize for legibility */
     font-synthesis: none;
@@ -12,8 +12,8 @@ html {
     -moz-osx-font-smoothing: grayscale;
 
     /* Customize the scrollbar to be thin, rounded and use the primary color */
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) var(--background);
+    scrollbar-width: auto;
+    scrollbar-color: var(--primary) var(--background-light);
     scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
@@ -21,7 +21,7 @@ html {
     }
 
     &::-webkit-scrollbar-track {
-        background: var(--background);
+        background: var(--background-light);
     }
 
     &::-webkit-scrollbar-thumb {
@@ -29,12 +29,11 @@ html {
         border-radius: 5px;
     }
 
-    /* Customize the text selection to the secondary color */
-    /* TODO Choose a better color here and update the comment */
+    /* Customize the text selection to a lighter background color */
 
     & ::selection,
     & ::-moz-selection {
-        background: var(--secondary);
+        background: var(--background-light);
     }
 }
 
@@ -46,8 +45,6 @@ body {
 #root {
     width: 100%;
     margin: 0 auto;
-
-    max-width: var(--screen-sm);
 
     @media (--min-screen-lg) {
         max-width: var(--screen-xl);
@@ -61,15 +58,16 @@ button:focus {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     hyphens: auto;
-    line-height: 1.25;
     overflow-wrap: break-word;
 }
 
 h1 {
+    color: var(--primary);
     font-family: var(--font-heading);
-    font-weight: 500;
+    font-weight: 300;
 
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -91,8 +89,8 @@ h1 {
 }
 
 h2 {
-    font-family: var(--font-subheading);
-    font-weight: 500;
+    font-family: var(--font-heading);
+    font-weight: 300;
 
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -105,7 +103,7 @@ h2 {
 
 h3 {
     font-family: var(--font-subheading);
-    font-weight: 500;
+    font-weight: bold;
 
     font-size: 1.25rem;
     line-height: 1.75rem;
@@ -123,46 +121,31 @@ h3 {
 
 h4 {
     font-family: var(--font-subheading);
-    font-weight: 400;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    overflow-wrap: break-word;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    font-weight: bold;
+
+    font-size: 1.25rem;
+    line-height: 1.5rem;
 }
 
 p {
     font-family: var(--font-paragraph);
     font-weight: 300;
+
     font-size: 1.125rem;
-    line-height: 1.75rem;
-    overflow-wrap: break-word;
+    line-height: 1.25rem;
+}
+
+label {
+    font-family: var(--font-paragraph);
+    font-weight: 300;
 }
 
 strong {
     font-weight: 500;
 }
 
-blockquote {
-    font-style: italic;
-    line-height: 1.25rem;
-    padding-left: 1rem;
-    border-left: .2rem solid var(--primary);
-}
-
-hr {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 2.5rem;
-    border-top: .2rem solid var(--primary);
-}
-
 ol,
 ul {
     padding-left: 1.25rem;
     list-style-type: decimal;
-}
-
-video {
-    width: 100%;
 }
