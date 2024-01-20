@@ -1,0 +1,16 @@
+.pv-search-filter-container {
+    display: flex;
+
+    flex-direction: column;
+    width: 100%;
+    row-gap: 1rem;
+}
+
+.pv-search-filter-options {
+    display: flex;
+    flex-direction: column;
+
+    & strong {
+        margin-bottom: .25rem;
+    }
+}

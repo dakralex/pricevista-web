@@ -1,8 +1,10 @@
 .pv-header {
-    margin: 1.5rem 2rem;
+    position: relative;
 
     display: grid;
+
     align-items: center;
-    grid-template-columns: 33% auto;
-    column-gap: 2rem;
+    margin: var(--outer-margin-y) var(--outer-margin-x) calc(var(--outer-margin-y) + 1rem);
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
 }

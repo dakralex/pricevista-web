@@ -1,5 +1,5 @@
 import './Sidebar.css';
-import SearchFilterBar from './SearchFilterBar.tsx';
+import SearchFilterSection from './SearchFilterSection.tsx';
 
 interface SideBarProps {
   isHidden?: boolean;
@@ -7,7 +7,7 @@ interface SideBarProps {
 
 const Sidebar = ({isHidden}: SideBarProps) => {
   return <div className={`pv-sidebar ${isHidden && 'hidden'}`}>
-    <SearchFilterBar />
+    <SearchFilterSection />
   </div>;
 };
 
