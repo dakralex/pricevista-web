@@ -3,12 +3,13 @@
     --font-subheading: "Puritan";
     --font-paragraph: "Nunito";
 
-    --primary: #F56476;
-    --primary-dark: #E43F6F;
-    --secondary: #79A9D1;
-    --tertiary: #899D78;
-    --foreground: #373F51;
-    --background: #DFBBB1;
+    --primary: #f56476;
+    --primary-dark: #e43f6f;
+    --secondary: #79a9d1;
+    --tertiary: #899d78;
+    --foreground: #373f51;
+    --background-light: #b76a52;
+    --background: #f3e6e2;
 
     --screen-xs: 26rem;
     --screen-sm: 40rem;
@@ -17,25 +18,28 @@
     --screen-xl: 80rem;
     --screen-2xl: 96rem;
 
-    --roundedness: 1.5rem;
+    --outer-margin-x: 2rem;
+    --outer-margin-y: 1.5rem;
+    --roundedness: 1.75rem;
 
-    --neumorphism-x: 2rem;
-    --neumorphism-y: 2rem;
+    --neumorphism-x: 1.25rem;
+    --neumorphism-y: 1.25rem;
     --neumorphism-angle: 145deg;
-    --neumorphism-blur: 3rem;
-    --neumorphism-light: #FED5CA;
-    --neumorphism-dark: #C0A198;
-    --neumorphism-shade-start: #EFC8BD;
-    --neumorphism-shade-end: #C9A89F;
+    --neumorphism-blur: 2.5rem;
+    --neumorphism-light: #fffbf6;
+    --neumorphism-dark: #ddd1ce;
+    --neumorphism-shade-start: #f3e6e2;
+    --neumorphism-shade-end: #f3e6e2;
 
     @media (prefers-color-scheme: dark) {
-        --foreground: #DFBBB1;
-        --background: #373F51;
+        --foreground: #f3e6e2;
+        --background: #373f51;
+        --background-light: #8691ac;
 
-        --neumorphism-light: #3e475b;
-        --neumorphism-dark: #303747;
-        --neumorphism-shade-start: #3b4357;
-        --neumorphism-shade-end: #323949;
+        --neumorphism-light: #3c4558;
+        --neumorphism-dark: #32394a;
+        --neumorphism-shade-start: #373f51;
+        --neumorphism-shade-end: #373f51;
     }
 
     --card-bg: linear-gradient(var(--neumorphism-angle),

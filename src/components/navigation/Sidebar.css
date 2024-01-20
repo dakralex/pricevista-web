@@ -1,4 +1,6 @@
 .pv-sidebar {
+    position: relative;
+
     width: 100%;
     padding: 1.75rem;
     margin-bottom: auto;
