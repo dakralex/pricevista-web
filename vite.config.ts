@@ -5,6 +5,7 @@ import postcssCustomMedia from 'postcss-custom-media';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	base: '',
 	plugins: [react()],
 	css: {
 		postcss: {

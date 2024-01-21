@@ -1,0 +1,13 @@
+# Redirect accesses to dot-files to 403 Forbidden
+RedirectMatch 403 /\..*$
+
+# Rewrite all accesses to the app's index.html
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule . /index.html [L]
+</IfModule>
