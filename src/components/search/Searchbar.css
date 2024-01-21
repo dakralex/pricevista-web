@@ -1,16 +1,16 @@
 .pv-searchbar {
     position: relative;
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
     width: 100%;
     padding: .75rem 1.5rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     color: var(--foreground);
+    border-radius: var(--roundedness);
     background: var(--card-bg);
     box-shadow: var(--card-box-pressed);
-    border-radius: var(--roundedness);
 
     &::placeholder {
         color: var(--foreground);
@@ -23,8 +23,8 @@
 
     &::after {
         background-image: url("../../assets/search.svg");
-        background-size: 16px 16px;
         background-repeat: no-repeat;
         background-position: calc(100% - 10px) center;
+        background-size: 16px 16px;
     }
 }

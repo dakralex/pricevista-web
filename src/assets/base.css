@@ -1,6 +1,6 @@
 *, *::before, *::after {
-    border: 0 solid #e5e7eb; /* Allow adding a border to an element by just adding a border-width. */
     box-sizing: border-box; /* Use a better box model (opinionated). */
+    border: 0 solid #e5e7eb; /* Allow adding a border to an element by just adding a border-width. */
 }
 
 :root {
@@ -16,10 +16,10 @@ html {
     Helvetica,
     Arial,
     sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji'; /* Improve consistency of default fonts in all browsers. */
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji"; /* Improve consistency of default fonts in all browsers. */
     line-height: 1.5; /* Correct the line height in all browsers. Tailwind: 1.5, Normalize: 1.15 */
     -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. */
 }
@@ -27,20 +27,20 @@ html {
 /** Sections **/
 
 body {
-    margin: 0; /* Remove the margin in all browsers. */
+    font-family: inherit;
 
     /* Inherit font-family and line-height from `html` so users can set them as
        a class directly on the `html` element. */
-    font-family: inherit;
     line-height: inherit;
+    margin: 0; /* Remove the margin in all browsers. */
 }
 
 /** Grouping content **/
 
 hr {
-    border-top-width: 1px; /* Ensure horizontal rules are visible by default */
     height: 0; /* Add the correct height in Firefox. */
     color: inherit; /* Correct the inheritance of border color in Firefox. */
+    border-top-width: 1px; /* Ensure horizontal rules are visible by default */
 }
 
 /** Text-level semantics **/
@@ -63,8 +63,8 @@ pre, code, kbd, samp {
     Menlo,
     Monaco,
     Consolas,
-    'Liberation Mono',
-    'Courier New',
+    "Liberation Mono",
+    "Courier New",
     monospace; /* Improve consistency of default fonts in all browsers. */
     font-size: 1em; /* Correct the odd 'em' font sizing in all browsers. */
 }
@@ -76,9 +76,9 @@ small {
 
 sub, sup {
     /* Prevent 'sub' and 'sup' elements from affecting the line height in all browsers. */
-    position: relative;
     font-size: 75%;
     line-height: 0;
+    position: relative;
     vertical-align: baseline;
 }
 
@@ -93,21 +93,21 @@ sup {
 /** Tabular data **/
 
 table {
-    border-color: inherit; /* Correct table border color inheritance in all Chrome and Safari. */
     border-collapse: collapse;
     text-indent: 0; /* Remove text indentation from table contents in Chrome and Safari. */
+    border-color: inherit; /* Correct table border color inheritance in all Chrome and Safari. */
 }
 
 /** Forms **/
 
 button, input, optgroup, select, textarea {
-    margin: 0; /* Remove the margin in Firefox and Safari. */
-    padding: 0;
-
-    /* Change the font styles in all browsers. */
     font-family: inherit;
     font-size: 100%;
+
+    /* Change the font styles in all browsers. */
     line-height: inherit;
+    margin: 0; /* Remove the margin in Firefox and Safari. */
+    padding: 0;
     color: inherit;
 }
 
@@ -115,13 +115,13 @@ button, select {
     text-transform: none; /* Remove the inheritance of text transform in Firefox. */
 }
 
-button, [type='button'], [type='reset'], [type='submit'], [role='button'] {
+button, [type="button"], [type="reset"], [type="submit"], [role="button"] {
+    cursor: pointer;
     background-color: transparent;
     background-image: none;
-    cursor: pointer;
 }
 
-[type='search'] {
+[type="search"] {
     outline-offset: -2px; /* Correct the outline style in Safari. */
     -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari. */
 }
@@ -145,8 +145,8 @@ progress {
 
 ::-moz-focus-inner {
     /* Remove the inner border and padding in Firefox. */
-    border-style: none;
     padding: 0;
+    border-style: none;
 }
 
 :-moz-focusring {

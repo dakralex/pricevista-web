@@ -1,13 +1,13 @@
 .pv-sidebar {
     position: relative;
 
+    display: flex;
     width: 100%;
-    padding: 1.75rem;
     margin-bottom: auto;
 
-    display: flex;
+    padding: 1.75rem;
 
+    border-radius: var(--roundedness);
     background: var(--card-bg);
     box-shadow: var(--card-box);
-    border-radius: var(--roundedness);
 }
