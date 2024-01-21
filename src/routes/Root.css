@@ -3,7 +3,6 @@
 
     display: grid;
 
-    align-items: center;
     margin: var(--outer-margin-y) var(--outer-margin-x);
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
