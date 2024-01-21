@@ -15,7 +15,6 @@ export type Article = {
 export type Articles = Array<Article>;
 
 const ArticleItem = ({
-  id,
   brandName,
   name,
   description,
@@ -26,7 +25,9 @@ const ArticleItem = ({
   price,
   storeName,
 }: Article) => {
-  return <div key={id} className="pv-article-item">
+  const priceDisplay = price / 100;
+
+  return <div className="pv-article-item">
     <img
         src={imageUrl ?? 'https://placehold.co/250'}
         alt={imageUrl
@@ -42,7 +43,7 @@ const ArticleItem = ({
     </div>
     <div className="pv-article-item-data">
       <div className="pv-article-item-price-best">
-        <p>{priceCurrency}&nbsp;{price}</p>
+        <p>{priceCurrency}&nbsp;{priceDisplay}</p>
         <span>{storeName}</span>
       </div>
     </div>

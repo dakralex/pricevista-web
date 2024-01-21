@@ -1,15 +1,28 @@
 .pv-article-item {
-    width: 100%;
-    padding: 2rem;
-
     display: grid;
-    grid-template-columns: 25% auto 5rem;
-    column-gap: 1.5rem;
 
+    width: 100%;
     color: var(--foreground);
+    border-radius: var(--roundedness);
+
     background: var(--card-bg);
     box-shadow: var(--card-box);
-    border-radius: var(--roundedness);
+    grid-template-columns: 1fr 2fr 1fr;
+    column-gap: 1rem;
+
+    & img {
+        border-top-left-radius: var(--roundedness);
+        border-bottom-left-radius: var(--roundedness);
+    }
+
+    & .pv-article-item-info,
+    & .pv-article-item-data {
+        padding: 1.25rem 0;
+    }
+
+    & .pv-article-item-data {
+        padding-right: 1.25rem;
+    }
 
     & h4 {
         margin-bottom: .5rem;
@@ -23,16 +36,16 @@
         text-align: end;
 
         & p {
-            font-weight: 500;
-
             font-size: 1.25rem;
+
+            font-weight: 500;
             line-height: 1.25rem;
         }
 
         & span {
-            font-weight: 300;
-
             font-size: .875rem;
+
+            font-weight: 300;
             line-height: .875rem;
         }
     }
