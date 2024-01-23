@@ -4,12 +4,29 @@
 
     width: 100%;
     color: var(--foreground);
-    border-radius: var(--roundedness);
 
     background: var(--card-bg);
     box-shadow: var(--card-box);
     grid-template-columns: 1fr 2fr 1fr;
     column-gap: 1rem;
+
+    /* Add a link that is focusable to allow navigating to the article page */
+
+    & > a {
+        position: absolute;
+        inset: 0;
+
+        &:focus {
+            outline: .125rem solid var(--foreground);
+            outline-offset: .125rem;
+        }
+    }
+
+    /* Make both the article item and the link round */
+
+    &, & > a {
+        border-radius: var(--roundedness);
+    }
 
     & img {
         z-index: 1;
@@ -51,10 +68,5 @@
             font-weight: 300;
             line-height: .875rem;
         }
-    }
-
-    & > a {
-        position: absolute;
-        inset: 0;
     }
 }

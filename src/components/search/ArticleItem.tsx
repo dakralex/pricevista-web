@@ -37,7 +37,7 @@ const ArticleItem = ({
         <span>{storeName}</span>
       </div>
     </div>
-    <Link to={`/article/${id}`} />
+    <Link to={`/article/${id}`} tabIndex={0} />
   </div>;
 };
 
