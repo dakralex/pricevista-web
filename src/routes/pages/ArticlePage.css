@@ -1,0 +1,17 @@
+.pv-article-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    & .pv-article-spinner {
+        margin: 3rem auto 0;
+    }
+}
+
+.pv-article-header {
+    display: grid;
+    justify-content: space-between;
+    padding: 2rem 0;
+    column-gap: 2em;
+    grid-template-columns: 2fr 1fr;
+}

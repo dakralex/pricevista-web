@@ -4,10 +4,6 @@
     flex-direction: column;
     width: 100%;
 
-    & > :only-child {
-        margin-top: 3rem;
-    }
-
     & > * {
         margin-bottom: 1.5rem;
     }

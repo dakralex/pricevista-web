@@ -1,4 +1,5 @@
 .pv-article-item {
+    position: relative;
     display: grid;
 
     width: 100%;
@@ -30,7 +31,8 @@
     }
 
     & .pv-article-item-brand {
-        font-style: oblique;
+        text-transform: uppercase;
+        color: var(--secondary);
     }
 
     & .pv-article-item-price-best {
@@ -49,5 +51,10 @@
             font-weight: 300;
             line-height: .875rem;
         }
+    }
+
+    & > a {
+        position: absolute;
+        inset: 0;
     }
 }

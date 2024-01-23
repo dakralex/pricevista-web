@@ -1,11 +1,39 @@
-import {Link} from 'react-router-dom';
+import './ArticlePage.css';
+import {Await, useLoaderData, useNavigate} from 'react-router-dom';
+import {Suspense} from 'react';
+import {InfinitySpin} from 'react-loader-spinner';
+import {ArticleHeader} from '../../components/article/ArticleHeader.tsx';
 
 const ArticlePage = () => {
-  return (
-      <div>
-        <h1>Articles</h1>
+  // @ts-expect-error TODO Find out how to type React-Router loader data
+  const {data} = useLoaderData();
+  const navigate = useNavigate();
 
-        <Link to={'..'}>Go back</Link>
+  const articleResolveHandler = ({status, article}: ArticlesInfoResponse) => {
+    console.log(status, article);
+
+    if (status === 'error' || article === undefined) {
+      return <div className="pv-article-container">
+        <h2>Nicht gefunden</h2>
+        <p>Es tut mir leid, aber dieser Artikel konnte nicht gefunden
+           werden.</p>
+      </div>;
+    } else {
+      return <ArticleHeader article={article} />;
+    }
+  };
+
+  return (
+      <div className="pv-article-container">
+        <button onClick={() => navigate(-1)}>{'\u2039 Zurück'}</button>
+        {/* TODO Refactor hardcoded color */}
+        <Suspense fallback={<div className="pv-article-spinner">
+          <InfinitySpin color="#f56476" />
+        </div>}>
+          <Await resolve={data}>
+            {articleResolveHandler}
+          </Await>
+        </Suspense>
       </div>
   );
 };

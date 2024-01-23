@@ -1,20 +1,10 @@
 import './ArticleItem.css';
+import {Link} from 'react-router-dom';
 
-export type Article = {
-  id: string;
-  brandName: string;
-  name: string;
-  description?: string;
-  imageUrl?: string;
-  articleUnit: string;
-  articleQuantity: number;
-  priceCurrency: string;
-  price: number;
-  storeName: string;
-}
-export type Articles = Array<Article>;
+type ArticleItemProps = Article;
 
 const ArticleItem = ({
+  id,
   brandName,
   name,
   description,
@@ -24,7 +14,7 @@ const ArticleItem = ({
   priceCurrency,
   price,
   storeName,
-}: Article) => {
+}: ArticleItemProps) => {
   const priceDisplay = price / 100;
 
   return <div className="pv-article-item">
@@ -47,6 +37,7 @@ const ArticleItem = ({
         <span>{storeName}</span>
       </div>
     </div>
+    <Link to={`/article/${id}`} />
   </div>;
 };
 
