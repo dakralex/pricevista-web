@@ -1,0 +1,36 @@
+.pv-button {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: max-content;
+    padding: .75rem 1.5rem;
+
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+
+    color: var(--foreground);
+    border-radius: var(--roundedness);
+    background: var(--primary);
+
+    appearance: none;
+    will-change: box-shadow, transform;
+
+    &:hover {
+        transform: translateY(0.125rem);
+        background-color: var(--primary-dark);
+
+        box-shadow: .25rem .25rem 0 0 var(--neumorphism-dark);
+    }
+
+    &:focus {
+        outline: .125rem solid var(--foreground);
+        outline-offset: .125rem;
+    }
+}
