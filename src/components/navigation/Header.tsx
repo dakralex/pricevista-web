@@ -1,6 +1,6 @@
 import './Header.css';
 import Searchbar, {SearchHandler} from '../search/Searchbar.tsx';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,7 +14,9 @@ const Header = () => {
   };
 
   return <div className="pv-header">
-    <h1>PriceVista</h1>
+    <div className="pv-header-logo">
+      <Link to="/"><h1>PriceVista</h1></Link>
+    </div>
     <Searchbar onEnter={searchbarHandler} />
   </div>;
 };
