@@ -3,6 +3,7 @@ import {Await, useLoaderData, useNavigate} from 'react-router-dom';
 import {Suspense} from 'react';
 import {InfinitySpin} from 'react-loader-spinner';
 import {ArticleHeader} from '../../components/article/ArticleHeader.tsx';
+import {Button} from '../../components/input/Button.tsx';
 
 const ArticlePage = () => {
   // @ts-expect-error TODO Find out how to type React-Router loader data
@@ -25,7 +26,7 @@ const ArticlePage = () => {
 
   return (
       <div className="pv-article-container">
-        <button onClick={() => navigate(-1)}>{'\u2039 Zurück'}</button>
+        <Button onClick={() => navigate(-1)}>{'\u2039 Zurück'}</Button>
         {/* TODO Refactor hardcoded color */}
         <Suspense fallback={<div className="pv-article-spinner">
           <InfinitySpin color="#f56476" />

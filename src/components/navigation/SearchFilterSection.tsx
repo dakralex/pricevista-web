@@ -1,4 +1,5 @@
 import './SearchFilterSection.css';
+import {Button} from '../input/Button.tsx';
 import Checkbox from '../input/Checkbox.tsx';
 import Select, {SelectOptions} from '../input/Select.tsx';
 import {RadioSelect, RadioSelectOptions} from '../input/RadioSelect.tsx';
@@ -34,6 +35,10 @@ const SearchFilterSection = () => {
     <div className="pv-search-filter-options">
       <strong>Filter-Optionen</strong>
       <Checkbox id="bio" name="bio" displayText="Nur Bio-Produkte" />
+    </div>
+
+    <div className="pv-search-filter-buttons">
+      <Button onClick={() => console.log('YES!')}>Anpassen</Button>
     </div>
   </div>;
 };

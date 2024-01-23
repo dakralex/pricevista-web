@@ -6,7 +6,7 @@ interface SideBarProps {
 }
 
 const Sidebar = ({isHidden}: SideBarProps) => {
-  return <div className={`pv-sidebar ${isHidden && 'hidden'}`}>
+  return <div className={`pv-sidebar ${isHidden ? 'hidden' : ''}`}>
     <SearchFilterSection />
   </div>;
 };

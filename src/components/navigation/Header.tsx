@@ -1,6 +1,6 @@
-import './Header.css';
-import Searchbar, {SearchHandler} from '../search/Searchbar.tsx';
 import {Link, useNavigate} from 'react-router-dom';
+import Searchbar, {SearchHandler} from '../search/Searchbar.tsx';
+import './Header.css';
 
 const Header = () => {
   const navigate = useNavigate();
