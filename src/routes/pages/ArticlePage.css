@@ -1,11 +1,17 @@
 .pv-article-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+
+    margin: var(--outer-margin-y) var(--outer-margin-x);
 
     & .pv-article-spinner {
         margin: 3rem auto 0;
     }
+}
+
+.pv-article-buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 .pv-article-header {
@@ -14,4 +20,19 @@
     padding: 2rem 0;
     column-gap: 2em;
     grid-template-columns: 2fr 1fr;
+
+    & [contenteditable=true] {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+
+        &::before {
+            position: absolute;
+            z-index: -1;
+            content: "";
+            opacity: 0.15;
+            background: var(--secondary);
+            inset: 0;
+        }
+    }
 }

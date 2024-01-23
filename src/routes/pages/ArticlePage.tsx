@@ -20,13 +20,17 @@ const ArticlePage = () => {
            werden.</p>
       </div>;
     } else {
-      return <ArticleHeader article={article} />;
+      return <ArticleHeader
+          article={article}
+      />;
     }
   };
 
   return (
       <div className="pv-article-container">
-        <Button onClick={() => navigate(-1)}>{'\u2039 Zurück'}</Button>
+        <div className="pv-article-buttons">
+          <Button onClick={() => navigate(-1)}>{'\u2039 Zurück'}</Button>
+        </div>
         {/* TODO Refactor hardcoded color */}
         <Suspense fallback={<div className="pv-article-spinner">
           <InfinitySpin color="#f56476" />
