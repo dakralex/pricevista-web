@@ -24,6 +24,7 @@ const SearchFilterSection = () => {
     query,
     sort,
     order,
+    markets,
   } = useSearch();
   const dispatch = useSearchDispatch();
 
@@ -58,7 +59,7 @@ const SearchFilterSection = () => {
 
   const filterSubmitHandler = () => {
     dispatch?.(resetSearchResults());
-    fetchSearchResults(query, 0, sort, order).
+    fetchSearchResults(query, 0, sort, order, markets).
         then(res => dispatch?.(receiveSearchResults(res.items)));
   };
 

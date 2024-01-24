@@ -7,10 +7,14 @@
 }
 
 .pv-search-filter-options {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-areas:
+        "title title title"
+        "1 2 3";
+    grid-template-columns: 1fr 1fr 1fr;
 
     & strong {
         margin-bottom: .25rem;
+        grid-area: title;
     }
 }

@@ -114,10 +114,27 @@ const ARTICLES_PAGE_SIZE = 10;
 const ARTICLES_API_URL = `${import.meta.env.VITE_API_BASE_URL}/articles`;
 
 export const fetchSearchResults = async (
-    query: string, page: number, sort: SearchSortOption,
-    order: SearchSortOrder): Promise<ArticlesResponse> => {
-  const apiUrl = `${ARTICLES_API_URL}/?q=${query}&page=${page}&pageSize=${ARTICLES_PAGE_SIZE}&sort=${sort}&order=${order}`;
+    query: string,
+    page: number,
+    sort: SearchSortOption,
+    order: SearchSortOrder,
+    markets: SearchMarkets,
+): Promise<ArticlesResponse> => {
+  const builder = [];
 
+  builder.push(
+      `page=${page}`,
+      `pageSize=${ARTICLES_PAGE_SIZE}`,
+      `q=${encodeURI(query)}`,
+      `sort=${sort}`,
+      `order=${order}`,
+  );
+
+  for (const market of markets) {
+    builder.push(`store[]=${market}`);
+  }
+
+  const apiUrl = `${ARTICLES_API_URL}/?${builder.join('&')}`;
   return fetch(apiUrl).then(res => res.json()).catch(err => console.error(err));
 };
 

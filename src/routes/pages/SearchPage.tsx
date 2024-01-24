@@ -21,6 +21,7 @@ const SearchPage = () => {
   const {
     sort,
     order,
+    markets,
     results,
     status,
   } = useSearch();
@@ -32,7 +33,7 @@ const SearchPage = () => {
 
     const pageNum = page ? parseInt(page, 10) - 1 : 0;
 
-    fetchSearchResults(query ?? '', pageNum, sort, order).
+    fetchSearchResults(query ?? '', pageNum, sort, order, markets).
         then(res => dispatch?.(receiveSearchResults(res.items)));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, query]);
