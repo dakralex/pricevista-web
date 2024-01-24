@@ -1,5 +1,6 @@
 import './Searchbar.css';
-import {ChangeEvent, KeyboardEvent, useState} from 'react';
+import {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 
 export type SearchHandler = (
     query: string | null,
@@ -14,7 +15,18 @@ const Searchbar = ({
   onChange,
   onEnter,
 }: SearchbarProps) => {
+  const location = useLocation();
   const [query, setQuery] = useState<string | null>(null);
+
+  // TODO Refactor the Searchbar to be a part of the SearchPage
+  useEffect(() => {
+    console.log(location.pathname);
+
+    if (location.pathname.startsWith('/search')) {
+      const searchTerm = location.pathname.split('/')[2];
+      setQuery(searchTerm);
+    }
+  }, [location]);
 
   return <input
       type="search"
@@ -34,6 +46,7 @@ const Searchbar = ({
           }
         }
       }}
+      value={query ?? ''}
   />;
 };
 

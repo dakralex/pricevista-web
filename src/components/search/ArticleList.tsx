@@ -7,7 +7,9 @@ interface ArticleListProps {
 
 const ArticleList = ({items}: ArticleListProps) => {
   return <div className="pv-article-list">
-    {items.map(item => <ArticleItem key={`${item.storeName}-${item.id}`} {...item} />)}
+    {items.map(item =>
+        <ArticleItem key={`${item.storeName}-${item.id}`} {...item} />)
+    }
   </div>;
 };
 
