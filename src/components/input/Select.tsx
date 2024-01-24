@@ -1,3 +1,4 @@
+import {ReactEventHandler} from 'react';
 import './Select.css';
 
 export type SelectOption = {
@@ -11,6 +12,7 @@ interface SelectProps {
   name: string;
   displayText?: string;
   placeholderText?: string;
+  onChange?: ReactEventHandler<HTMLSelectElement>;
   options: SelectOptions;
 }
 
@@ -19,13 +21,14 @@ const Select = ({
   name,
   displayText,
   placeholderText,
+  onChange,
   options,
 }: SelectProps) => {
   const selectId = `pv-select-${id}`;
 
   return <label className="pv-select" htmlFor={selectId}>
     {displayText}
-    <select id={selectId} name={name}>
+    <select id={selectId} name={name} onChange={onChange}>
       {placeholderText && <option value="">{placeholderText}</option>}
       {options.map(({displayText, value}) =>
           <option key={`${selectId}-${value}`}
