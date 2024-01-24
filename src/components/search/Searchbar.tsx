@@ -1,44 +1,23 @@
-import './Searchbar.css';
-import {
-  ChangeEventHandler,
-  KeyboardEventHandler,
-  useEffect,
-  useState,
-} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import {
   setSearchQuery,
+  useSearch,
   useSearchDispatch,
 } from '../../context/SearchProvider.tsx';
+import './Searchbar.css';
 
 const Searchbar = () => {
-  const location = useLocation();
+  const {query} = useSearch();
   const navigate = useNavigate();
   const dispatch = useSearchDispatch();
-  const [query, setQuery] = useState<string>('');
 
-  // TODO Refactor the Searchbar to be a part of the SearchPage
-  useEffect(() => {
-    if (location.pathname.startsWith('/search')) {
-      const searchTerm = location.pathname.split('/')[2];
-      setQuery(searchTerm);
-      dispatch?.(setSearchQuery(searchTerm ?? ''));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
-
-  const changeHandler: ChangeEventHandler<HTMLInputElement> =
-      (e) => setQuery(e.target.value);
-  const keyUpHandler: KeyboardEventHandler<HTMLInputElement> =
+  const changeHandler: React.ChangeEventHandler<HTMLInputElement> =
+      (e) => dispatch?.(setSearchQuery(e.currentTarget.value));
+  const keyUpHandler: React.KeyboardEventHandler<HTMLInputElement> =
       (e) => {
         if (e.key === 'Enter') {
-          dispatch?.(setSearchQuery(query ?? ''));
-
-          if (query === null || query === '') {
-            navigate(`/`);
-          } else {
-            navigate(`/search/${query}/1`);
-          }
+          navigate(query === '' ? '/' : `/search/${query}/1`);
         }
       };
 
@@ -48,7 +27,7 @@ const Searchbar = () => {
       placeholder="Ich suche nach..."
       onChange={changeHandler}
       onKeyUp={keyUpHandler}
-      value={query ?? ''}
+      value={query}
   />;
 };
 

@@ -1,23 +1,31 @@
-import './SearchFilterSection.css';
+import React from 'react';
 import {Button} from '../input/Button.tsx';
 import Checkbox from '../input/Checkbox.tsx';
 import Select, {SelectOptions} from '../input/Select.tsx';
 import {RadioSelect, RadioSelectOptions} from '../input/RadioSelect.tsx';
-import {FormEventHandler, ReactEventHandler, useRef} from 'react';
 import {
   addSearchMarket,
+  fetchSearchResults,
+  receiveSearchResults,
   removeSearchMarket,
+  resetSearchResults,
   setSearchSort,
+  useSearch,
   useSearchDispatch,
 } from '../../context/SearchProvider.tsx';
-import {SearchMarket, SearchSortOption, SearchSortOrder} from '../../search';
+import './SearchFilterSection.css';
 
 const ARROW_UP = '\u279A';
 const ARROW_DOWN = `\u2798`;
 const EN_SPACE = `\u2000`;
 
 const SearchFilterSection = () => {
-  const formRef = useRef<HTMLFormElement>(null);
+  const {
+    query,
+    sort,
+    order,
+  } = useSearch();
+  const dispatch = useSearchDispatch();
 
   const sortOptions: SelectOptions = [
     {value: 'price-asc', displayText: `Preis${EN_SPACE}${ARROW_UP}`},
@@ -33,20 +41,14 @@ const SearchFilterSection = () => {
     {value: 'all', displayText: 'Alle Märkte'},
   ];
 
-  const filterSubmitHandler: FormEventHandler = () => {
-    // TODO Implement update on articles search api here
-  };
-
-  const dispatch = useSearchDispatch();
-
-  const selectSortHandler: ReactEventHandler<HTMLSelectElement> = (e) => {
+  const selectSortHandler: React.ReactEventHandler<HTMLSelectElement> = (e) => {
     const [sort, order] = e.currentTarget.value.split('-');
 
     dispatch?.(
         setSearchSort(sort as SearchSortOption, order as SearchSortOrder));
   };
 
-  const checkMarketHandler = (market: SearchMarket): ReactEventHandler<HTMLInputElement> =>
+  const checkMarketHandler = (market: SearchMarket): React.ReactEventHandler<HTMLInputElement> =>
       (e) => {
         dispatch?.(e.currentTarget.checked
             ? addSearchMarket(market)
@@ -54,9 +56,13 @@ const SearchFilterSection = () => {
         );
       };
 
-  return <form ref={formRef}
-               onSubmit={filterSubmitHandler}
-               className="pv-search-filter-container">
+  const filterSubmitHandler = () => {
+    dispatch?.(resetSearchResults());
+    fetchSearchResults(query, 0, sort, order).
+        then(res => dispatch?.(receiveSearchResults(res.items)));
+  };
+
+  return <div className="pv-search-filter-container">
     <Select id="sort"
             name="sort"
             displayText="Sortierung"
@@ -85,9 +91,11 @@ const SearchFilterSection = () => {
     </div>
 
     <div className="pv-search-filter-buttons">
-      <Button onClick={() => formRef.current?.submit()}>Filter anpassen</Button>
+      <Button onClick={filterSubmitHandler}>
+        Filter anpassen
+      </Button>
     </div>
-  </form>;
+  </div>;
 };
 
 export default SearchFilterSection;

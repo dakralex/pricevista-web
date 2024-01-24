@@ -1,22 +1,56 @@
-import {Suspense} from 'react';
+import {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import {InfinitySpin} from 'react-loader-spinner';
-import {Await, useLoaderData, useParams} from 'react-router-dom';
 import Sidebar from '../../components/navigation/Sidebar.tsx';
 import ArticleList from '../../components/search/ArticleList.tsx';
 import './SearchPage.css';
+import {
+  fetchSearchResults,
+  receiveSearchResults,
+  resetSearchResults,
+  setSearchQuery,
+  useSearch,
+  useSearchDispatch,
+} from '../../context/SearchProvider.tsx';
 
 const SearchPage = () => {
-  // @ts-expect-error TODO Find out how to type React-Router loader data
-  const {data} = useLoaderData();
-  const {query} = useParams<SearchPageParams>();
+  const {
+    page,
+    query,
+  } = useParams<SearchPageParams>();
+  const {
+    sort,
+    order,
+    results,
+    status,
+  } = useSearch();
+  const dispatch = useSearchDispatch();
 
-  const articlesResolveHandler = (data: ArticlesResponse) => {
-    if (data.resultSize === 0) {
+  useEffect(() => {
+    dispatch?.(resetSearchResults());
+    dispatch?.(setSearchQuery(query ?? ''));
+
+    const pageNum = page ? parseInt(page, 10) - 1 : 0;
+
+    fetchSearchResults(query ?? '', pageNum, sort, order).
+        then(res => dispatch?.(receiveSearchResults(res.items)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, query]);
+
+  const resultsRenderHandler = (
+      results: SearchResults, status: SearchStatus) => {
+    if (status === 'loading' || results === null) {
+      return <div className="pv-search-empty">
+        <InfinitySpin color="#f56476" />
+      </div>;
+    }
+
+    if (results.length === 0) {
       return <p className="pv-search-empty">
         Es wurde keine Artikel mit dem Namen "{query}" gefunden.
       </p>;
     } else {
-      return <ArticleList items={data.items} />;
+      return <ArticleList items={results} />;
     }
   };
 
@@ -25,13 +59,7 @@ const SearchPage = () => {
         <Sidebar />
         {/* TODO Refactor hardcoded color */}
         <div className="pv-search-results">
-          <Suspense fallback={<div className="pv-search-empty">
-            <InfinitySpin color="#f56476" />
-          </div>}>
-            <Await resolve={data}>
-              {articlesResolveHandler}
-            </Await>
-          </Suspense>
+          {resultsRenderHandler(results, status)}
         </div>
       </div>
   );

@@ -1,19 +1,18 @@
-import {createContext, Dispatch, useContext, useReducer} from 'react';
 import {
-  SearchAction,
-  SearchMarket,
-  SearchProviderProps,
-  SearchReducer,
-  SearchSortOption,
-  SearchSortOrder,
-  SearchState,
-} from '../search';
+  createContext,
+  Dispatch,
+  ReactElement,
+  useContext,
+  useReducer,
+} from 'react';
 
 const initialSearch: SearchState = {
   query: '',
   sort: 'price',
   order: 'asc',
   markets: [],
+  results: null,
+  status: 'loading',
 };
 
 const searchReducer: SearchReducer = (search, action) => {
@@ -49,13 +48,25 @@ const searchReducer: SearchReducer = (search, action) => {
         markets: markets,
       };
     }
+    case 'resetResults':
+      return {
+        ...search,
+        results: null,
+        status: 'loading',
+      };
+    case 'receiveResults':
+      return {
+        ...search,
+        results: action.articles,
+        status: 'done',
+      };
     default:
-      throw Error(`Unknown action: ${action}`);
+      throw Error(`Unknown action`);
   }
 };
 
 const SearchContext =
-    createContext<SearchState | null>(null);
+    createContext<SearchState>(initialSearch);
 const SearchDispatchContext =
     createContext<Dispatch<SearchAction> | null>(null);
 
@@ -85,6 +96,30 @@ export const removeSearchMarket = (market: SearchMarket): SearchAction => ({
   type: 'removeMarket',
   market: market,
 });
+
+export const resetSearchResults = (): SearchAction => ({
+  type: 'resetResults',
+});
+
+export const receiveSearchResults = (articles: Array<Article>): SearchAction => ({
+  type: 'receiveResults',
+  articles: articles,
+});
+
+type SearchProviderProps = {
+  children: ReactElement | ReactElement[] | string,
+}
+
+const ARTICLES_PAGE_SIZE = 10;
+const ARTICLES_API_URL = `${import.meta.env.VITE_API_BASE_URL}/articles`;
+
+export const fetchSearchResults = async (
+    query: string, page: number, sort: SearchSortOption,
+    order: SearchSortOrder): Promise<ArticlesResponse> => {
+  const apiUrl = `${ARTICLES_API_URL}/?q=${query}&page=${page}&pageSize=${ARTICLES_PAGE_SIZE}&sort=${sort}&order=${order}`;
+
+  return fetch(apiUrl).then(res => res.json()).catch(err => console.error(err));
+};
 
 const SearchProvider = ({
   children,
