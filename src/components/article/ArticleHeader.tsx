@@ -40,8 +40,6 @@ export const ArticleHeader = ({
   const editHandler = () => setEditable(true);
   const saveHandler = () => {
     setEditable(false);
-
-    // Handle saving the changes
     const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/articles/info/`;
 
     fetch(apiUrl, {
@@ -55,12 +53,21 @@ export const ArticleHeader = ({
         brandName: brandName === article.brandName ? null : brandName,
         description: description === article.description ? null : description,
       }),
-    }).then(res => {
-      // @ts-expect-error TODO Make sure the response has a type
-      const status = res.status as boolean;
-
-      if (!status) {
+    }).then(res => res.json()).then(res => {
+      if (res.status !== 'success') {
         throw new Error('Could not change the article information.');
+      }
+    }).catch(err => console.error(err));
+  };
+
+  const deleteHandler = () => {
+    const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/articles/info/?id=${article.id}`;
+
+    fetch(apiUrl, {
+      method: 'DELETE',
+    }).then(res => res.json()).then(res => {
+      if (res.status !== 'success') {
+        throw new Error('Could not delete the article.');
       }
     }).catch(err => console.error(err));
   };
@@ -68,6 +75,9 @@ export const ArticleHeader = ({
   return <Fragment>
     <Button onClick={editable ? saveHandler : editHandler}>
       {editable ? '💾 Speichern' : '✒️ Bearbeiten'}
+    </Button>
+    <Button onClick={deleteHandler}>
+      {'Löschen'}
     </Button>
     <div className="pv-article-header">
       <div className="pv-article-info-box">

@@ -1,51 +1,53 @@
 import './Searchbar.css';
-import {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import {
+  ChangeEventHandler,
+  KeyboardEventHandler,
+  useEffect,
+  useState,
+} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {
+  setSearchQuery,
+  useSearchDispatch,
+} from '../../context/SearchProvider.tsx';
 
-export type SearchHandler = (
-    query: string | null,
-    event: ChangeEvent | KeyboardEvent<HTMLInputElement>) => void
-
-interface SearchbarProps {
-  onChange?: SearchHandler,
-  onEnter?: SearchHandler
-}
-
-const Searchbar = ({
-  onChange,
-  onEnter,
-}: SearchbarProps) => {
+const Searchbar = () => {
   const location = useLocation();
-  const [query, setQuery] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const dispatch = useSearchDispatch();
+  const [query, setQuery] = useState<string>('');
 
   // TODO Refactor the Searchbar to be a part of the SearchPage
   useEffect(() => {
-    console.log(location.pathname);
-
     if (location.pathname.startsWith('/search')) {
       const searchTerm = location.pathname.split('/')[2];
       setQuery(searchTerm);
+      dispatch?.(setSearchQuery(searchTerm ?? ''));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
+
+  const changeHandler: ChangeEventHandler<HTMLInputElement> =
+      (e) => setQuery(e.target.value);
+  const keyUpHandler: KeyboardEventHandler<HTMLInputElement> =
+      (e) => {
+        if (e.key === 'Enter') {
+          dispatch?.(setSearchQuery(query ?? ''));
+
+          if (query === null || query === '') {
+            navigate(`/`);
+          } else {
+            navigate(`/search/${query}/1`);
+          }
+        }
+      };
 
   return <input
       type="search"
       className="pv-searchbar"
       placeholder="Ich suche nach..."
-      onChange={(e) => {
-        setQuery(e.target.value);
-
-        if (onChange) {
-          onChange(query, e);
-        }
-      }}
-      onKeyUp={(e) => {
-        if (e.key === 'Enter') {
-          if (onEnter) {
-            onEnter(query, e);
-          }
-        }
-      }}
+      onChange={changeHandler}
+      onKeyUp={keyUpHandler}
       value={query ?? ''}
   />;
 };
