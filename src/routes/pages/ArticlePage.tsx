@@ -1,9 +1,9 @@
-import './ArticlePage.css';
-import {Await, useLoaderData, useNavigate} from 'react-router-dom';
 import {Suspense} from 'react';
+import {Await, useLoaderData, useNavigate} from 'react-router-dom';
 import {InfinitySpin} from 'react-loader-spinner';
-import {ArticleHeader} from '../../components/article/ArticleHeader.tsx';
 import {Button} from '../../components/input/Button.tsx';
+import {ArticleHeader} from '../../components/article/ArticleHeader.tsx';
+import './ArticlePage.css';
 
 const ArticlePage = () => {
   // @ts-expect-error TODO Find out how to type React-Router loader data

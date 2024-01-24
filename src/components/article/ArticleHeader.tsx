@@ -1,4 +1,4 @@
-import {FormEventHandler, Fragment, useRef, useState} from 'react';
+import React, {Fragment, useRef, useState} from 'react';
 import {Button} from '../input/Button.tsx';
 
 type ArticleHeaderProps = {
@@ -22,17 +22,17 @@ export const ArticleHeader = ({
     return editable && inputText !== null && inputText.trim() !== '';
   };
 
-  const editBrandNameHandler: FormEventHandler = (e) => {
+  const editBrandNameHandler: React.FormEventHandler = (e) => {
     const newText = e.currentTarget.textContent;
     setBrandName(shouldMakeEdit(newText) ? newText : article.brandName);
   };
 
-  const editArticleNameHandler: FormEventHandler = (e) => {
+  const editArticleNameHandler: React.FormEventHandler = (e) => {
     const newText = e.currentTarget.textContent;
     setArticleName(shouldMakeEdit(newText) ? newText : article.brandName);
   };
 
-  const editDescriptionHandler: FormEventHandler = (e) => {
+  const editDescriptionHandler: React.FormEventHandler = (e) => {
     const newText = e.currentTarget.textContent;
     setDescription(shouldMakeEdit(newText) ? newText : article.brandName);
   };
@@ -73,12 +73,14 @@ export const ArticleHeader = ({
   };
 
   return <Fragment>
-    <Button onClick={editable ? saveHandler : editHandler}>
-      {editable ? '💾 Speichern' : '✒️ Bearbeiten'}
-    </Button>
-    <Button onClick={deleteHandler}>
-      {'Löschen'}
-    </Button>
+    <div className="pv-article-buttons">
+      <Button onClick={editable ? saveHandler : editHandler}>
+        {editable ? '💾 Speichern' : '✒️ Bearbeiten'}
+      </Button>
+      <Button onClick={deleteHandler}>
+        {'Löschen'}
+      </Button>
+    </div>
     <div className="pv-article-header">
       <div className="pv-article-info-box">
         <h2 className="pv-article-info-name">
